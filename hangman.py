@@ -53,7 +53,6 @@ def hangman():
     guesses = 8
     movie_name = movie_list(imdb_url)
     movie_name = movie_name.lower()
-    print(movie_name)
     print("The first movie for you to guess is :-")
     temp = encryption(movie_name)
     print(temp)
