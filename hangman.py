@@ -26,7 +26,10 @@ def movie_list(url):
     for i in range(9,len(movies)):
         movies[i] = movies[i][5:len(movies[i])-8]
 
-    return random.choice(movies)
+    return movies
+
+#This will store the movie list once extracted.
+movie_lists = movie_list(imdb_url)
 
 #This function will encrytpt the movie  names for the hangman game.
 def encryption(word):
@@ -51,10 +54,9 @@ def getting_indexes(name, list):
 def hangman():
     choices = []
     guesses = 8
-    movie_name = movie_list(imdb_url)
+    movie_name = random.choice(movie_lists)
     movie_name = movie_name.lower()
-    print(movie_name)
-    print("The first movie for you to guess is :-")
+    print("\nThe movie for you to guess is :-")
     temp = encryption(movie_name)
     print(temp)
     print("Your guess is :-")
@@ -90,7 +92,7 @@ def hangman():
             print(temp)
 
         choices.append(user)
-
+        print("\n")
 #This function contains the intro and choices for user to play itagain or not. This function runs the game.
 def game():
     print("Hello there !! Welcome to Hangman. It's a movie guessing game.\n There are 50 movies to guess. All of them are taken from the first page of 'IMdB top 250 movies based on user rating'.\n Computer will choose a random movie and the game will begin.\n You will have 8 guesses.\nRules :-\n1. You shouldn't guess the same alphabet again(Although game will warn you when you do.)\n2. Wrong guess will decrease you guesses count by 1\n3. Right guess won't make any changes to your guesses count.\n4. You have to type your guess only in lowercase letters.")
@@ -98,8 +100,8 @@ def game():
     print("\n\nThe game starts now ------")
     hangman()
     flag = True
-    print("Do you wanna play the game again ?(y/n)")
     while(flag == True):
+        print("Do you wanna play the game again ?(y/n)")
         user_input = input()
         if(user_input == "y"):
             print("Alright, Here we go.......\n\n")
